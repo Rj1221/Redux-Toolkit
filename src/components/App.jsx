@@ -1,9 +1,13 @@
 import React from 'react';
+import { Profile } from './index';
 
 const App = () => {
   console.log('App');
   return (
-    <div>App</div>
+    <div>
+      <Profile />
+    </div>
+
   );
 };
 
