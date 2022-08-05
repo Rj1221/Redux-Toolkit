@@ -16,6 +16,7 @@ export default (state = initialState, action) => {
 */
 // New Approach to Create Reducer
 import { createReducer } from '@reduxjs/toolkit';
+import { updateStatus } from '../action/userAction';
 
 const initialState = {
   name: 'Raj',
@@ -27,6 +28,21 @@ export const userReducer = createReducer(initialState, (builder) => {
   builder.addCase('UPDATE_AGE', (state, action) => ({
     ...state,
     age: action.payload,
+  }));
+  builder.addCase('UPDATE_NAME', (state, action) => ({
+    ...state,
+    name: action.payload,
+  }));
+  /* Old Concept with action
+  builder.addCase('UPDATE_STATUS', (state, action) => ({
+    ...state,
+    status: action.payload,
+  }));
+  */
+  // New Concept with action
+  builder.addCase(updateStatus, (state, action) => ({
+    ...state,
+    status: action.payload,
   }));
 });
 export default userReducer;
