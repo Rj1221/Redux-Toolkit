@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import userReducer from '../Reducer/userReducer';
 
-const initialState = {
-  name: 'Raj',
-  age: 25,
-  status: 'coder',
-};
 const store = configureStore({
-  reducer: (state) => state,
-  preloadedState: initialState,
+  reducer: {
+    user: userReducer,
+  },
+  // preloadedState: initialState,
 });
 
 export default store;
