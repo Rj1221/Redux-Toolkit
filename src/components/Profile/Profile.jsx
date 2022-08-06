@@ -9,6 +9,7 @@ const Profile = () => {
     dispatch(updateUserAge(age));
   };
   const updateName = () => {
+    // Api call to Get Name
     dispatch(fetchUser());
   };
   const updateStatus = (status) => {
