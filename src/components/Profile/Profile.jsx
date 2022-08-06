@@ -1,22 +1,18 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateStatus as update, fetchName } from '../../action/userAction';
+import { updateAge as updateUserAge, updateName as updateUserName, updateStatus as updateUserState } from '../../Reducer/userReducer';
 
 const Profile = () => {
   const { name: userName, age: userAge, status: userStatus } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const updateAge = (age) => {
-    dispatch({ type: 'UPDATE_AGE', payload: age });
+    dispatch(updateUserAge(age));
   };
-  const updateName = async () => {
-    // We can do async stuff here but its not a proper way we should do it in action
-    // const res = await fetch('https://jsonplaceholder.typicode.com/users');
-    // const result = await res.json();
-    // dispatch({ type: 'UPDATE_NAME', payload: result[0].name });
-    dispatch(fetchName());
+  const updateName = (name) => {
+    dispatch(updateUserName(name));
   };
   const updateStatus = (status) => {
-    dispatch(update(status));
+    dispatch(updateUserState(status));
   };
   return (
     <div>
@@ -25,8 +21,8 @@ const Profile = () => {
       <p>Age: { userAge }</p>
       <p>Status: { userStatus }</p>
       <div>
-        <button type="button" onClick={() => updateAge(40, 'RajuRastogi')}>Update Age</button>
-        <button type="button" onClick={() => updateName()}>Update Name</button>
+        <button type="button" onClick={() => updateAge(40)}>Update Age</button>
+        <button type="button" onClick={() => updateName('RajaBabu')}>Update Name</button>
         <button type="button" onClick={() => updateStatus('Programmer')}>Update Status</button>
       </div>
     </div>
